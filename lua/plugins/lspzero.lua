@@ -20,7 +20,7 @@ return {
     { "rafamadriz/friendly-snippets" }, -- Optional
 
     -- Formatting
-    { 'jose-elias-alvarez/null-ls.nvim' },
+    { "jose-elias-alvarez/null-ls.nvim" },
   },
   config = function()
     -- Lspzero
@@ -37,9 +37,9 @@ return {
         icons = {
           package_installed = "✓",
           package_pending = "➜",
-          package_uninstalled = "✗"
-        }
-      }
+          package_uninstalled = "✗",
+        },
+      },
     })
 
     vim.diagnostic.config({
@@ -88,13 +88,16 @@ return {
     }
 
     local cmp = require("cmp")
-    cmp.setup {
+    cmp.setup({
       formatting = {
         format = function(_, vim_item)
-          vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind .. " "
+          vim_item.kind = (cmp_kinds[vim_item.kind] or "")
+            .. vim_item.kind
+            .. " "
           return vim_item
         end,
-      }, }
+      },
+    })
 
     -- Nullls
     local present, null_ls = pcall(require, "null-ls")
@@ -115,8 +118,8 @@ return {
       b.formatting.stylua,
     }
 
-    null_ls.setup {
+    null_ls.setup({
       sources = sources,
-    }
+    })
   end,
 }

@@ -24,5 +24,10 @@ vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
 -- Neotree
 vim.keymap.set("n", "<leader>es", ":Neotree toggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>ef", ":Neotree<CR>", { silent = true })
-vim.keymap.set("n", "<leader>eg", ":Neotree float git_status<CR>", { silent = true })
+vim.keymap.set(
+  "n",
+  "<leader>eg",
+  ":Neotree float git_status<CR>",
+  { silent = true }
+)
 vim.keymap.set("n", "<leader>eb", ":Neotree buffers<CR>", { silent = true })

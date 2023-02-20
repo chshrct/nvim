@@ -1,40 +1,39 @@
 return {
   -- autotag
-  { "windwp/nvim-ts-autotag",
+  {
+    "windwp/nvim-ts-autotag",
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      require("nvim-treesitter.configs").setup({
         autotag = {
           enable = true,
-        }
-      }
-    end },
+        },
+      })
+    end,
+  },
   -- autopairs
   {
     "windwp/nvim-autopairs",
     config = function()
-      require("nvim-autopairs").setup {}
+      require("nvim-autopairs").setup({})
 
-      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-      local cmp = require('cmp')
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local cmp = require("cmp")
 
-      cmp.event:on(
-        'confirm_done',
-        cmp_autopairs.on_confirm_done()
-      )
-    end
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+    end,
   },
   -- rainbow brackets
   {
-    'mrjones2014/nvim-ts-rainbow',
+    "mrjones2014/nvim-ts-rainbow",
     config = function()
-      require 'nvim-treesitter.configs'.setup {
+      require("nvim-treesitter.configs").setup({
         rainbow = {
           enable = true,
           -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
           extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
           max_file_lines = nil, -- Do not enable for files with more than n lines, int
-        }
-      }
-    end
-  }
+        },
+      })
+    end,
+  },
 }
