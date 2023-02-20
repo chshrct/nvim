@@ -19,8 +19,8 @@ return {
     { "L3MON4D3/LuaSnip" }, -- Required
     { "rafamadriz/friendly-snippets" }, -- Optional
 
-    --Rainbow
-    { "mrjones2014/nvim-ts-rainbow" },
+    -- Formatting
+    { 'jose-elias-alvarez/null-ls.nvim' },
   },
   config = function()
     -- Lspzero
