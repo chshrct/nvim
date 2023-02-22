@@ -1,4 +1,7 @@
+-- better diagnostics list and others
 return {
+
+  -- search
   {
     "nvim-telescope/telescope.nvim",
     version = false,
@@ -93,5 +96,60 @@ return {
     config = function(_, opts)
       require("telescope").setup(opts)
     end,
+  },
+
+  -- diagnostics list
+  {
+    "folke/trouble.nvim",
+    cmd = { "TroubleToggle", "Trouble" },
+    opts = { use_diagnostic_signs = true },
+    keys = {
+      {
+        "<leader>dd",
+        "<cmd>TroubleToggle document_diagnostics<cr>",
+        desc = "Document Diagnostics (Trouble)",
+      },
+      {
+        "<leader>dw",
+        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        desc = "Workspace Diagnostics (Trouble)",
+      },
+      {
+        "<leader>dl",
+        "<cmd>TroubleToggle loclist<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>dq",
+        "<cmd>TroubleToggle quickfix<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    },
+  },
+
+  -- explorer
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      window = {
+        position = "right",
+        mappings = {
+          ["cr"] = {
+            "toggle_node",
+            nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+          },
+          ["o"] = "open",
+        },
+      },
+      filesystem = {
+        follow_current_file = true, -- This will find and focus the file in the active buffer every
+        group_empty_dirs = true, -- when true, empty folders will be grouped together
+      },
+    },
   },
 }
