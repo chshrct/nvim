@@ -2,6 +2,7 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     version = false,
+    cmd = "Telescope",
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = function()
       local builtin = require("telescope.builtin")
@@ -9,6 +10,7 @@ return {
       return {
         -- Search files and strings
         { "<leader>sf", builtin.find_files, {} },
+        { "<leader>so", builtin.oldfiles, {} },
         { "<leader>sb", builtin.buffers, {} },
         { "<leader>sg", builtin.git_files, {} },
         { "<leader>ss", builtin.live_grep, {} },
