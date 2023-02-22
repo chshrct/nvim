@@ -7,9 +7,14 @@ return {
     keys = function()
       local builtin = require("telescope.builtin")
 
+      local findFiles = function()
+        return builtin.find_files({
+          no_ignore = true,
+        })
+      end
       return {
         -- Search files and strings
-        { "<leader>sf", builtin.find_files, {} },
+        { "<leader>sf", findFiles, {} },
         { "<leader>so", builtin.oldfiles, {} },
         { "<leader>sb", builtin.buffers, {} },
         { "<leader>sg", builtin.git_files, {} },
@@ -34,16 +39,6 @@ return {
 
       return {
         defaults = {
-          vimgrep_arguments = {
-            "rg",
-            "-L",
-            "--color=never",
-            "--no-heading",
-            "--with-filename",
-            "--line-number",
-            "--column",
-            "--smart-case",
-          },
           prompt_prefix = "   ",
           selection_caret = " ",
           initial_mode = "insert",
