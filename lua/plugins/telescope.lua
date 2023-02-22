@@ -1,43 +1,100 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.1",
+    version = false,
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
+    keys = function()
       local builtin = require("telescope.builtin")
-      local findFiles = function()
-        return builtin.find_files({
-          no_ignore = true,
-        })
-      end
 
+      return {
+        -- Search files and strings
+        { "<leader>sf", builtin.find_files, {} },
+        { "<leader>sb", builtin.buffers, {} },
+        { "<leader>sg", builtin.git_files, {} },
+        { "<leader>ss", builtin.live_grep, {} },
+        { "<leader>sw", builtin.grep_string, {} },
+        { "<leader>/", builtin.current_buffer_fuzzy_find, {} },
+
+        -- Search utils
+        { "<leader>sh", builtin.help_tags, {} },
+
+        -- Search LSP
+        { "<leader>sr", builtin.lsp_references, {} },
+        { "<leader>sd", builtin.lsp_definitions, {} },
+        { "<leader>st", builtin.lsp_type_definitions, {} },
+        { "<leader>si", builtin.lsp_implementations, {} },
+        { "<leader>se", builtin.diagnostics, {} },
+        { "<leader>sa", builtin.lsp_dynamic_workspace_symbols, {} },
+      }
+    end,
+    opts = function()
       local actions = require("telescope.actions")
-      require("telescope").setup({
+
+      return {
         defaults = {
+          vimgrep_arguments = {
+            "rg",
+            "-L",
+            "--color=never",
+            "--no-heading",
+            "--with-filename",
+            "--line-number",
+            "--column",
+            "--smart-case",
+          },
+          prompt_prefix = "   ",
+          selection_caret = " ",
+          initial_mode = "insert",
+          selection_strategy = "reset",
+          sorting_strategy = "ascending",
+          layout_strategy = "horizontal",
+          layout_config = {
+            horizontal = {
+              prompt_position = "top",
+              preview_width = 0.55,
+              results_width = 0.8,
+            },
+            vertical = {
+              mirror = false,
+            },
+            width = 0.87,
+            height = 0.80,
+            preview_cutoff = 120,
+          },
+          file_sorter = require("telescope.sorters").get_fuzzy_file,
+          file_ignore_patterns = { "node_modules" },
+          generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+          path_display = { "truncate" },
+          winblend = 0,
+          border = {},
+          borderchars = {
+            "─",
+            "│",
+            "─",
+            "│",
+            "╭",
+            "╮",
+            "╯",
+            "╰",
+          },
+          color_devicons = true,
+          set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+          file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+          grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+          qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+          -- Developer configurations: Not meant for general override
+          buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
           mappings = {
             n = {
-              ["d"] = actions.delete_buffer,
+              ["bd"] = actions.delete_buffer,
               ["<C-c>"] = actions.close,
             },
           },
         },
-      })
-
-      -- Search files and strings
-      vim.keymap.set("n", "<leader>sf", findFiles, {})
-      vim.keymap.set("n", "<leader>sg", builtin.git_files, {})
-      vim.keymap.set("n", "<leader>ss", builtin.live_grep, {})
-      vim.keymap.set("n", "<leader>sw", builtin.grep_string, {})
-      vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, {})
-      vim.keymap.set("n", "<leader>sb", builtin.buffers, {})
-
-      -- Search LSP
-      vim.keymap.set("n", "<leader>sr", builtin.lsp_references, {})
-      vim.keymap.set("n", "<leader>sd", builtin.lsp_definitions, {})
-      vim.keymap.set("n", "<leader>st", builtin.lsp_type_definitions, {})
-      vim.keymap.set("n", "<leader>si", builtin.lsp_implementations, {})
-      vim.keymap.set("n", "<leader>se", builtin.diagnostics, {})
-      vim.keymap.set("n", "<leader>sa", builtin.lsp_workspace_symbols, {})
+      }
+    end,
+    config = function(_, opts)
+      require("telescope").setup(opts)
     end,
   },
 }
