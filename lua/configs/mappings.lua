@@ -14,11 +14,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
-vim.keymap.set("n", "<leader>P", [["+P]])
-
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
 
 -- Neotree
