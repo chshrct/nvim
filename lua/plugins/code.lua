@@ -2,17 +2,20 @@ return {
   -- autotag
   {
     "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        autotag = {
-          enable = true,
-        },
-      })
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {
+      autotag = {
+        enable = true,
+      },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
   -- autopairs
   {
     "windwp/nvim-autopairs",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("nvim-autopairs").setup({})
 
@@ -25,6 +28,7 @@ return {
   -- rainbow brackets
   {
     "mrjones2014/nvim-ts-rainbow",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("nvim-treesitter.configs").setup({
         rainbow = {
@@ -46,5 +50,22 @@ return {
       show_trailing_blankline_indent = false,
       show_current_context = false,
     },
+  },
+
+  -- comments
+  { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
+  {
+    "echasnovski/mini.comment",
+    event = "VeryLazy",
+    opts = {
+      hooks = {
+        pre = function()
+          require("ts_context_commentstring.internal").update_commentstring({})
+        end,
+      },
+    },
+    config = function(_, opts)
+      require("mini.comment").setup(opts)
+    end,
   },
 }
