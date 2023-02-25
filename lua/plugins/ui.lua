@@ -11,6 +11,44 @@ return {
       "nvim-tree/nvim-web-devicons", -- optional dependency
     },
     config = function()
+      require("nvim-navic").setup({
+        icons = {
+          Null = " ",
+          Namespace = " ",
+          Package = " ",
+          String = " ",
+          Number = " ",
+          Boolean = " ",
+          Array = " ",
+          Object = " ",
+          Key = " ",
+          Text = "  ",
+          Method = "  ",
+          Function = "  ",
+          Constructor = "  ",
+          Field = "  ",
+          Variable = "  ",
+          Class = "  ",
+          Interface = "  ",
+          Module = "  ",
+          Property = "  ",
+          Unit = "  ",
+          Value = "  ",
+          Enum = "  ",
+          Keyword = "  ",
+          Snippet = "  ",
+          Color = "  ",
+          File = "  ",
+          Reference = "  ",
+          Folder = "  ",
+          EnumMember = "  ",
+          Constant = "  ",
+          Struct = "  ",
+          Event = "  ",
+          Operator = "  ",
+          TypeParameter = "  ",
+        },
+      })
       require("barbecue").setup({
         create_autocmd = false, -- prevent barbecue from updating itself automatically
       })

@@ -60,6 +60,15 @@ return {
 
     -- Cmp
     local cmp_kinds = {
+      Null = " ",
+      Namespace = " ",
+      Package = " ",
+      String = " ",
+      Number = " ",
+      Boolean = " ",
+      Array = " ",
+      Object = " ",
+      Key = " ",
       Text = "  ",
       Method = "  ",
       Function = "  ",
