@@ -97,35 +97,6 @@ return {
     end,
   },
 
-  -- diagnostics list
-  {
-    "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    opts = { use_diagnostic_signs = true },
-    keys = {
-      {
-        "<leader>dd",
-        "<cmd>TroubleToggle document_diagnostics<cr>",
-        desc = "Document Diagnostics (Trouble)",
-      },
-      {
-        "<leader>dw",
-        "<cmd>TroubleToggle workspace_diagnostics<cr>",
-        desc = "Workspace Diagnostics (Trouble)",
-      },
-      {
-        "<leader>dl",
-        "<cmd>TroubleToggle loclist<cr>",
-        desc = "Location List (Trouble)",
-      },
-      {
-        "<leader>dq",
-        "<cmd>TroubleToggle quickfix<cr>",
-        desc = "Quickfix List (Trouble)",
-      },
-    },
-  },
-
   -- explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
