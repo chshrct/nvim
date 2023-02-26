@@ -31,10 +31,58 @@ return {
 
     lsp.setup()
 
+    -- cmp appearance
+    local cmp_kinds = {
+      Text = "  ",
+      Method = "  ",
+      Function = "  ",
+      Constructor = "  ",
+      Field = "  ",
+      Variable = "  ",
+      Class = "  ",
+      Interface = "  ",
+      Module = "  ",
+      Property = "  ",
+      Unit = "  ",
+      Value = "  ",
+      Enum = "  ",
+      Keyword = "  ",
+      Snippet = "  ",
+      Color = "  ",
+      File = "  ",
+      Reference = "  ",
+      Folder = "  ",
+      EnumMember = "  ",
+      Constant = "  ",
+      Struct = "  ",
+      Event = "  ",
+      Operator = "  ",
+      TypeParameter = "  ",
+    }
+
+    local cmp = require("cmp")
+    local cmp_config = lsp.defaults.cmp_config({
+      window = {
+        completion = {
+          winhighlight = "Normal:Conceal,FloatBorder:Conceal,Search:None",
+          col_offset = -3,
+          side_padding = 0,
+        },
+      },
+      formatting = {
+        format = function(_, vim_item)
+          vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
+          return vim_item
+        end,
+      },
+    })
+    cmp.setup(cmp_config)
+
+    -- diagnostics
     vim.diagnostic.config({ virtual_text = true })
 
     local signs =
-    { Error = " ", Warn = " ", Hint = " ", Info = " " }
+      { Error = " ", Warn = " ", Hint = " ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
