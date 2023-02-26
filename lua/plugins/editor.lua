@@ -1,4 +1,3 @@
--- better diagnostics list and others
 return {
 
   -- search
