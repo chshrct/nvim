@@ -26,6 +26,7 @@ return {
 
         -- Search utils
         { "<leader>sh", builtin.help_tags, {} },
+        { "<leader>sk", builtin.keymaps, {} },
 
         -- Search LSP
         { "<leader>sr", builtin.lsp_references, {} },
