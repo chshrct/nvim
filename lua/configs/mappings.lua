@@ -1,6 +1,8 @@
 -- leader key
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
+
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- normal mode
 vim.keymap.set("i", "jj", "<Esc>")
@@ -19,11 +21,14 @@ vim.keymap.set(
   { expr = true, silent = true }
 )
 
+-- paste over currently selected text without yanking it
+vim.keymap.set("v", "p", '"_dP')
+
 -- better indenting
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
--- Move Lines
+-- move lines
 vim.keymap.set("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
 vim.keymap.set("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 vim.keymap.set("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
@@ -40,13 +45,23 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
+-- Insert blank line
+vim.keymap.set("n", "]<Space>", "o<Esc>")
+vim.keymap.set("n", "[<Space>", "O<Esc>")
+
+-- Resize window using <shift> arrow keys
+vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
+vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
+vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
+
 -- disable highlight search
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 -- format with LSP
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
 
--- Neotree
+-- neotree
 vim.keymap.set("n", "<leader>es", ":Neotree toggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>ef", ":Neotree<CR>", { silent = true })
 vim.keymap.set(

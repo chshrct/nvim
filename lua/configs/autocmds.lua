@@ -1,8 +1,12 @@
--- highlight on yank
+-- See `:help vim.highlight.on_yank()`
+local highlight_group =
+    vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank()
   end,
+  group = highlight_group,
+  pattern = "*",
 })
 
 -- go to last loc when opening a buffer
@@ -13,13 +17,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     if mark[1] > 0 and mark[1] <= lcount then
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
-  end,
-})
-
--- resize splits if window got resized
-vim.api.nvim_create_autocmd({ "VimResized" }, {
-  callback = function()
-    vim.cmd("tabdo wincmd =")
   end,
 })
 
@@ -60,3 +57,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   command = "checktime",
 })
+
+-- don't auto comment new line
+vim.api.nvim_create_autocmd(
+  "BufEnter",
+  { command = [[set formatoptions-=cro]] }
+)
