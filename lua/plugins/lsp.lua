@@ -32,33 +32,7 @@ return {
     lsp.setup()
 
     -- cmp appearance
-    local cmp_kinds = {
-      Text = "  ",
-      Method = "  ",
-      Function = "  ",
-      Constructor = "  ",
-      Field = "  ",
-      Variable = "  ",
-      Class = "  ",
-      Interface = "  ",
-      Module = "  ",
-      Property = "  ",
-      Unit = "  ",
-      Value = "  ",
-      Enum = "  ",
-      Keyword = "  ",
-      Snippet = "  ",
-      Color = "  ",
-      File = "  ",
-      Reference = "  ",
-      Folder = "  ",
-      EnumMember = "  ",
-      Constant = "  ",
-      Struct = "  ",
-      Event = "  ",
-      Operator = "  ",
-      TypeParameter = "  ",
-    }
+    local cmp_kinds = require("configs.icons").cmp_kinds
 
     local cmp = require("cmp")
     local cmp_config = lsp.defaults.cmp_config({
@@ -81,8 +55,8 @@ return {
     -- diagnostics
     vim.diagnostic.config({ virtual_text = true })
 
-    local signs =
-      { Error = " ", Warn = " ", Hint = " ", Info = " " }
+    local signs = require("configs.icons").diagnostics
+
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
