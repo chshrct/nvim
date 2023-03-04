@@ -10,6 +10,7 @@ return {
     },
 
     opts = {
+      auto_install = true,
       highlight = { enable = true, use_languagetree = true },
       indent = { enable = true, disable = { "python" } },
       context_commentstring = { enable = true, enable_autocmd = false },
