@@ -8,7 +8,6 @@ return {
       { "<leader>v", desc = "Increment selection" },
       { "<leader>V", desc = "Schrink selection", mode = "x" },
     },
-
     opts = {
       auto_install = true,
       highlight = { enable = true, use_languagetree = true },
@@ -32,7 +31,6 @@ return {
         },
       },
     },
-
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
