@@ -68,7 +68,7 @@ return {
   },
   {
     "glepnir/lspsaga.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     config = true,
   },
 }
