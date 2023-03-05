@@ -76,31 +76,19 @@ return {
           { name = "path" },
         }),
         formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, item)
-            local max_width = 0
-            local source_names = {
-              nvim_lsp = "(LSP)",
-              path = "(Path)",
-              luasnip = "(Snippet)",
-              buffer = "(Buffer)",
-            }
-            local duplicates = {
-              buffer = 1,
-              path = 1,
-              nvim_lsp = 0,
-              luasnip = 1,
-            }
-            local duplicates_default = 0
-            if max_width ~= 0 and #item.abbr > max_width then
-              item.abbr = string.sub(item.abbr, 1, max_width - 1)
-                .. icons.ui.Ellipsis
-            end
-            item.kind = icons.kind[item.kind]
-            item.menu = source_names[entry.source.name]
-            item.dup = duplicates[entry.source.name] or duplicates_default
-            return item
+          fields = { "abbr", "kind" },
+          format = function(_, vim_item)
+            vim_item.kind = (icons.kind[vim_item.kind] or "")
+              .. " "
+              .. vim_item.kind
+            return vim_item
           end,
+        },
+        window = {
+          completion = {
+            winhighlight = "Normal:Conceal,FloatBorder:Conceal,Search:None",
+            side_padding = 0,
+          },
         },
       })
 
