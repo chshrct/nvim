@@ -32,9 +32,6 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
-        "ruff",
-        "debugpy",
-        "codelldb",
       },
     },
     config = function(_, opts)
