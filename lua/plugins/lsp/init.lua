@@ -56,11 +56,12 @@ return {
       local nls = require("null-ls")
       nls.setup({
         sources = {
+          -- Lua
           nls.builtins.formatting.stylua,
-          nls.builtins.formatting.black,
-          nls.builtins.diagnostics.ruff.with({
-            extra_args = { "--max-line-length=180" },
-          }),
+          -- JS/TS
+          nls.builtins.formatting.prettierd,
+          nls.builtins.diagnostics.eslint_d,
+          nls.builtins.code_actions.eslint_d,
         },
       })
     end,
