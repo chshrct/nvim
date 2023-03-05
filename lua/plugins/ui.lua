@@ -54,7 +54,7 @@ return {
       })
 
       vim.api.nvim_create_autocmd({
-        "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+        "WinResized", -- or WinResized on NVIM-v0.9 and higher
         "BufWinEnter",
         "CursorHold",
         "InsertLeave",
