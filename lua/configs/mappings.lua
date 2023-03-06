@@ -56,7 +56,7 @@ vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
 vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
 -- disable highlight search
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("n", "<leader>th", ":nohlsearch<CR>")
 
 -- format with LSP
 vim.keymap.set("n", "<leader>cf", vim.lsp.buf.format)
