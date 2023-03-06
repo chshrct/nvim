@@ -35,4 +35,12 @@ return {
       end,
     },
   },
+  -- fugitive
+  {
+    "tpope/vim-fugitive",
+    cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
+    dependencies = {
+      "tpope/vim-rhubarb",
+    },
+  },
 }
