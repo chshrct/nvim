@@ -2,6 +2,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter/nvim-treesitter",
+    },
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     keys = {
@@ -28,6 +32,26 @@ return {
           node_incremental = "<leader>v",
           scope_incremental = "<nop>",
           node_decremental = "<leader>V",
+        },
+      },
+      textobjects = {
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["]a"] = "@attribute.inner",
+            ["]f"] = "@function.inner",
+            ["]c"] = "@class.inner",
+            ["]p"] = "@parameter.inner",
+            ["]r"] = "@return.inner",
+          },
+          goto_previous_start = {
+            ["[a"] = "@attribute.inner",
+            ["[f"] = "@function.inner",
+            ["[c"] = "@class.inner",
+            ["[p"] = "@parameter.inner",
+            ["[r"] = "@return.inner",
+          },
         },
       },
     },
