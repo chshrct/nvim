@@ -34,11 +34,25 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-          ["<C-f>"] = cmp.mapping.scroll_docs(4),
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+
+          -- confirm selection
+          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<C-y>"] = cmp.mapping.confirm({ select = false }),
+
+          -- scroll up and down in the completion documentation
+          ["<C-b>"] = cmp.mapping.scroll_docs(-5),
+          ["<C-f>"] = cmp.mapping.scroll_docs(5),
+
+          -- toggle completion
+          ["<C-e>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.abort()
+              fallback()
+            else
+              cmp.complete()
+            end
+          end),
+
           ["<C-j>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
