@@ -124,7 +124,7 @@ return {
     },
     cmd = "Neotree",
     keys = {
-      { "<leader>es", ":Neotree toggle<CR>", { silent = true } },
+      { "<leader>te", ":Neotree toggle<CR>", { silent = true } },
       { "<leader>ef", ":Neotree<CR>", { silent = true } },
       {
         "<leader>eg",
