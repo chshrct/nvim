@@ -44,9 +44,9 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
-vim.opt.incsearch = true -- Highlight search on type
-vim.opt.colorcolumn = "80" -- Indent for code length
-vim.opt.listchars:append("eol:↴") -- Show end of line
+opt.incsearch = true -- Highlight search on type
+opt.colorcolumn = "80" -- Indent for code length
+opt.listchars:append("eol:↴") -- Show end of line
 
 if vim.fn.has("nvim-0.9.0") == 1 then
   opt.splitkeep = "screen"
