@@ -12,7 +12,7 @@ function M.on_attach(client, buffer)
     { desc = "Goto Implementation" }
   )
   self:map(
-    "gb",
+    "gt",
     "Telescope lsp_type_definitions",
     { desc = "Goto Type Definition" }
   )
@@ -33,6 +33,8 @@ function M.on_attach(client, buffer)
     "Lspsaga code_action",
     { desc = "Code Action", mode = { "n", "v" }, has = "codeAction" }
   )
+  self:map("gl", "Lspsaga show_line_diagnostics")
+  self:map("gh", "Lspsaga  lsp_finder")
 
   local format = require("plugins.lsp.format").format
   self:map(

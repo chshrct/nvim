@@ -26,13 +26,7 @@ local function lsp_init()
     },
 
     diagnostic = {
-      -- virtual_text = false,
-      -- virtual_text = { spacing = 4, prefix = "●" },
-      virtual_text = {
-        severity = {
-          min = vim.diagnostic.severity.ERROR,
-        },
-      },
+      virtual_text = true,
       signs = {
         active = signs,
       },
