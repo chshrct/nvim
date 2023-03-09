@@ -12,6 +12,7 @@ return {
       require("nvim-treesitter.configs").setup(opts)
     end,
   },
+
   -- autopairs
   {
     "windwp/nvim-autopairs",
@@ -25,6 +26,7 @@ return {
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
+
   -- rainbow brackets
   {
     "mrjones2014/nvim-ts-rainbow",
@@ -40,6 +42,7 @@ return {
       })
     end,
   },
+
   -- indent guides
   {
     "lukas-reineke/indent-blankline.nvim",

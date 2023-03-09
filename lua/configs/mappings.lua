@@ -46,8 +46,8 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- Insert blank line
-vim.keymap.set("n", "]<Space>", "o<Esc>")
-vim.keymap.set("n", "[<Space>", "O<Esc>")
+vim.keymap.set("n", "]<leader>", "o<Esc>k")
+vim.keymap.set("n", "[<leader>", "O<Esc>j")
 
 -- Resize window using <shift> arrow keys
 vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
