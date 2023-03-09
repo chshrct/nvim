@@ -71,4 +71,12 @@ return {
       require("mini.comment").setup(opts)
     end,
   },
+
+  -- surround
+  {
+    "kylechui/nvim-surround",
+    version = false, -- Use for stability; omit to use `main` branch for the latest features
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {},
+  },
 }
