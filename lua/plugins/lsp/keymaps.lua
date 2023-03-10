@@ -22,12 +22,28 @@ function M.on_attach(client, buffer)
     vim.lsp.buf.signature_help,
     { desc = "Signature Help", has = "signatureHelp" }
   )
-  self:map("[d", M.diagnostic_goto(true), { desc = "Next Diagnostic" })
-  self:map("]d", M.diagnostic_goto(false), { desc = "Prev Diagnostic" })
-  self:map("]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
-  self:map("[e", M.diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
-  self:map("]w", M.diagnostic_goto(true, "WARNING"), { desc = "Next Warning" })
-  self:map("[w", M.diagnostic_goto(false, "WARNING"), { desc = "Prev Warning" })
+  self:map("[d", "Lspsaga diagnostic_jump_next", { desc = "Next Diagnostic" })
+  self:map("]d", "Lspsaga diagnostic_jump_prev", { desc = "Prev Diagnostic" })
+  self:map("]e", function()
+    require("lspsaga.diagnostic"):goto_next({
+      severity = vim.diagnostic.severity.ERROR,
+    })
+  end, { desc = "Next Error" })
+  self:map("[e", function()
+    require("lspsaga.diagnostic"):goto_prev({
+      severity = vim.diagnostic.severity.ERROR,
+    })
+  end, { desc = "Prev Error" })
+  self:map("]w", function()
+    require("lspsaga.diagnostic"):goto_next({
+      severity = vim.diagnostic.severity.WARNING,
+    })
+  end, { desc = "Next Warning" })
+  self:map("[w", function()
+    require("lspsaga.diagnostic"):goto_prev({
+      severity = vim.diagnostic.severity.WARNING,
+    })
+  end, { desc = "Prev Warning" })
   self:map(
     "<leader>ca",
     "Lspsaga code_action",
