@@ -111,6 +111,7 @@ return {
     config = function(_, opts)
       require("telescope").setup(opts)
       require("telescope").load_extension("fzf")
+      vim.api.nvim_set_hl(0, "TelescopeBorder", {ctermbg = 222})
     end,
   },
 
