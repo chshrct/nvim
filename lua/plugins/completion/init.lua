@@ -103,6 +103,10 @@ return {
             winhighlight = "Normal:Conceal,FloatBorder:Conceal,Search:None",
             side_padding = 0,
           },
+          documentation = {
+            winhighlight = "Normal:Conceal,FloatBorder:Conceal,Search:None",
+            side_padding = 0,
+          },
         },
       })
 

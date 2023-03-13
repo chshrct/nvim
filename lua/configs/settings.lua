@@ -47,6 +47,7 @@ opt.wrap = false -- Disable line wrap
 opt.incsearch = true -- Highlight search on type
 opt.colorcolumn = "80" -- Indent for code length
 opt.listchars:append("eol:↴") -- Show end of line
+opt.pumblend = 0 -- kinda transparancy
 
 if vim.fn.has("nvim-0.9.0") == 1 then
   opt.splitkeep = "screen"
