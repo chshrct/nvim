@@ -22,25 +22,25 @@ return {
       end
       return {
         -- Search files and strings
-        { "<leader>sf", findFiles, {} },
-        { "<leader>so", builtin.oldfiles, {} },
-        { "<leader>sb", builtin.buffers, {} },
-        { "<leader>sg", builtin.git_files, {} },
-        { "<leader>ss", builtin.live_grep, {} },
-        { "<leader>sw", builtin.grep_string, {} },
-        { "<leader>/", builtin.current_buffer_fuzzy_find, {} },
+        { "<leader>sf", findFiles, silent = true },
+        { "<leader>so", builtin.oldfiles, silent = true },
+        { "<leader>sb", builtin.buffers, silent = true },
+        { "<leader>sg", builtin.git_files, silent = true },
+        { "<leader>ss", builtin.live_grep, silent = true },
+        { "<leader>sw", builtin.grep_string, silent = true },
+        { "<leader>/", builtin.current_buffer_fuzzy_find, silent = true },
 
         -- Search utils
-        { "<leader>sh", builtin.help_tags, {} },
-        { "<leader>sk", builtin.keymaps, {} },
+        { "<leader>sh", builtin.help_tags, silent = true },
+        { "<leader>sk", builtin.keymaps, silent = true },
 
         -- Search LSP
-        { "<leader>sr", builtin.lsp_references, {} },
-        { "<leader>sd", builtin.lsp_definitions, {} },
-        { "<leader>st", builtin.lsp_type_definitions, {} },
-        { "<leader>si", builtin.lsp_implementations, {} },
-        { "<leader>se", builtin.diagnostics, {} },
-        { "<leader>sa", builtin.lsp_dynamic_workspace_symbols, {} },
+        { "<leader>sr", builtin.lsp_references, silent = true },
+        { "<leader>sd", builtin.lsp_definitions, silent = true },
+        { "<leader>st", builtin.lsp_type_definitions, silent = true },
+        { "<leader>si", builtin.lsp_implementations, silent = true },
+        { "<leader>se", builtin.diagnostics, silent = true },
+        { "<leader>sa", builtin.lsp_dynamic_workspace_symbols, silent = true },
       }
     end,
     opts = function()
@@ -111,7 +111,7 @@ return {
     config = function(_, opts)
       require("telescope").setup(opts)
       require("telescope").load_extension("fzf")
-      vim.api.nvim_set_hl(0, "TelescopeBorder", {ctermbg = 222})
+      vim.api.nvim_set_hl(0, "TelescopeBorder", { ctermbg = 222 })
     end,
   },
 
@@ -125,17 +125,17 @@ return {
     },
     cmd = "Neotree",
     keys = {
-      { "<leader>te", ":Neotree toggle<CR>", { silent = true } },
-      { "<leader>ef", ":Neotree<CR>", { silent = true } },
+      { "<leader>te", ":Neotree toggle<CR>", silent = true },
+      { "<leader>ef", ":Neotree<CR>", silent = true },
       {
         "<leader>eg",
         ":Neotree float git_status<CR>",
-        { silent = true },
+        silent = true,
       },
       {
         "<leader>eb",
         ":Neotree buffers<CR>",
-        { silent = true },
+        silent = true,
       },
     },
     opts = {
